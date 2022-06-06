@@ -1,41 +1,46 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include <time.h>
-/* more headers goes there */
+#include <stdio.h>
 
+/* betty style doc for function main goes there */
 /**
- * main - This only prints the last digit of n
+ * main - Entry point
  *
- * Return: 0 if all is ok
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
 	int i;
 	int j;
-	int aux;
 
-	j = 48;
-	aux = 0;
-	for (i = 48; i < 58; i++)
+	i = 48;
+	j = 49;
+	while  ((i < 57) && (j < 58))
 	{
-		for (j = j + aux ; j < 58; j++)
+		putchar(i);
+		putchar(j);
+		if ((i == 56) && (j == 57))
 		{
-			if (j != i)
+			putchar('\n');
+			i++;
+			j++;
+		}
+		else
+		{
+			putchar(44);
+			putchar(32);
+			if (j < 57)
 			{
-				putchar(i);
-				putchar(j);
-				if (!(i == '8' && j == '9'))
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				j++;
+			}
+			else
+			{
+				i++;
+				j = 1 + i;
 			}
 		}
-		j = 48;
-		aux++;
+
 	}
-	putchar('\n');
+
 	return (0);
 }
-© 2022 GitHub, Inc.
