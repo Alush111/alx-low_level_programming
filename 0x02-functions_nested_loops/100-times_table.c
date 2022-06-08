@@ -1,46 +1,50 @@
+#include <unistd.h>
 #include "main.h"
-
+#include <stdio.h>
 /**
- * print_times_table - Prints the n times table
+ * print_times_table - function that prints the n times table, starting with 0.
+ * @n: number of the table.
  *
- * @n: number times table (0 < n <= 15)
- *
- * Return: no return
  */
+
 void print_times_table(int n)
 {
-	int a, b, op;
+	int res, i, j, aux, aux1, t, aux2;
 
-	if (n >= 0 && n <= 15)
+	if ((n >= 0) && (n <= 15))
 	{
-		for (a = 0; a <= n; a++)
+		for (i = 0; i <= n; i++)
 		{
-			_putchar(48);
-			for (b = 1; b <= n; b++)
+			for (j = 0; j <= n; j++)
 			{
-				op = a * b;
-				_putchar(44);
-				_putchar(32);
-				if (op <= 9)
+				res = i * j;
+				if (j != 0)
+					_putchar(' ');
+				if ((res < 100) && (j != 0))
+					_putchar(' ');
+				if ((res < 10) && (j != 0))
+					_putchar(' ');
+				t = 0;
+				aux = res;
+				aux2 = 10;
+				for (; aux > 0; t++)
+					aux = aux / 10;
+				for (; t > 1; t--)
 				{
-					_putchar(32);
-					_putchar(32);
-					_putchar(op + 48);
+					aux1 = t - 3;
+					for (; aux1 >= 0; aux1--)
+						aux2 = 10 * aux2;
+					aux = res / aux2;
+					res = res % aux2;
+					_putchar(aux + '0');
+					aux2 = 10;
 				}
-				else if (op <= 99)
-				{
-					_putchar(32);
-					_putchar((op / 10) + 48);
-					_putchar((op % 10) + 48);
-				}
-				else
-				{
-					_putchar(((op / 100) % 10) + 48);
-					_putchar(((op / 10) % 10) + 48);
-					_putchar((op % 10) + 48);
-				}
+				_putchar(res + '0');
+				if (j != n)
+					_putchar(',');
+
 			}
 			_putchar('\n');
 		}
 	}
-}
+}}
