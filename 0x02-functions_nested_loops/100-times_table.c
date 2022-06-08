@@ -1,50 +1,51 @@
-#include <unistd.h>
 #include "main.h"
-#include <stdio.h>
+
 /**
- * print_times_table - function that prints the n times table, starting with 0.
- * @n: number of the table.
+ * print_times_table - prints the times table up to the integer input
+ * @n: integer input
  *
+ * Return: void
  */
 
 void print_times_table(int n)
 {
-	int res, i, j, aux, aux1, t, aux2;
+	int a, b, c, d, e, f;
 
-	if ((n >= 0) && (n <= 15))
+	if (n >= 0 && n < 15)
 	{
-		for (i = 0; i <= n; i++)
+		for (a = 0; a <=  n; a++)
 		{
-			for (j = 0; j <= n; j++)
+			for (b = 0; b <= n; b++)
 			{
-				res = i * j;
-				if (j != 0)
-					_putchar(' ');
-				if ((res < 100) && (j != 0))
-					_putchar(' ');
-				if ((res < 10) && (j != 0))
-					_putchar(' ');
-				t = 0;
-				aux = res;
-				aux2 = 10;
-				for (; aux > 0; t++)
-					aux = aux / 10;
-				for (; t > 1; t--)
+				c = a * b; d = c / 100; e = (c /  10) % 10;
+				f = (c % 100) % 10;
+				if (b == 0)
 				{
-					aux1 = t - 3;
-					for (; aux1 >= 0; aux1--)
-						aux2 = 10 * aux2;
-					aux = res / aux2;
-					res = res % aux2;
-					_putchar(aux + '0');
-					aux2 = 10;
+					_putchar('0');
 				}
-				_putchar(res + '0');
-				if (j != n)
-					_putchar(',');
-
+				else if (c < 10)
+				{
+					_putchar(' '); _putchar(' ');
+					_putchar('0' + f);
+				}
+				else if (c < 100)
+				{
+					_putchar(' ');
+					_putchar('0' + e); _putchar('0' + f);
+				}
+				else
+				{
+					_putchar('0' + d);
+					_putchar('0' + e);
+					_putchar('0' + f);
+				}
+				if (b < n)
+				{
+					_putchar(','); _putchar(' ');
+				}
+				else
+					_putchar('\n');
 			}
-			_putchar('\n');
 		}
 	}
-}}
+}
