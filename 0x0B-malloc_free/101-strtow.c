@@ -129,15 +129,4 @@ char **strtow(char *str)
 		free(m);
 		return (NULL);
 	}
-	pos = (int *)malloc(sizeof(int) * words * 2);
-	if (pos == NULL)
-	{
-		free(m);
-		free(pos);
-		return (NULL);
-	}
-	look_pos(str, pos);
-	if (print_words(pos, m, str, words))
-		return (NULL);
-	return (m);
-}
+
